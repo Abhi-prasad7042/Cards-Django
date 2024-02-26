@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}">
+{% endblock css %}
+
+
+{% block body %}
+    <div class="container mt-5">
+        <form class="col-5 card mx-auto p-4 shadow-lg" method="post", enctype="multipart/form-data">
+            <h1>Update Car Details</h1>
+            {% csrf_token %}
+            <hr>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Update Car Name</label>
+              <input type="text" value={{data.car_name}} class="form-control" name="car_name">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Update Car Description</label>
+              <textarea class="form-control" name="car_desc" cols="30" rows="4">{{data.car_desc}}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Update image</label>
+                <input type="file" class="form-control" name="car_image" value={{data.car_image}}>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+    </div>
+
+{% endblock body %}

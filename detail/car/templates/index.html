@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
+{% block body %}
+
+<nav class="navbar shadow-lg" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+    <a class="navbar-brand">Car Details</a>
+    <form class="d-flex">
+        <a href="/login/" class="btn btn-outline-danger" type="submit">Logout</a>
+    </form>
+    </div>
+</nav>
+
+    <div class="welcome-message">
+        <h1>Welcome to Our Website!</h1>
+    </div>
+
+    <div class="container mt-5">
+        <form class="col-5 card mx-auto p-4 shadow-lg" method="post", enctype="multipart/form-data">
+            <h1>Car Details</h1>
+            {% csrf_token %}
+            <hr>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Car Name</label>
+              <input type="text" class="form-control" name="car_name">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Car Description</label>
+              <textarea class="form-control" name="car_desc" cols="30" rows="4"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Upload image</label>
+                <input type="file" class="form-control" name="car_image">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
+    {% comment %} {{var}} {% endcomment %}
+    <div class=" my-5 w-75 mx-auto content">
+        {% for item in data %}
+        <div class="card-wrapper my-2">
+            <div class="card" style="width: 20rem;">
+                <img src="media/{{item.car_image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.car_name}}</h5>
+                    <p class="card-text" >{{item.car_desc}}</p>
+                    <a href="/delete_car/{{item.id}}" class="btn btn-danger">Delete</a>
+                    <a href="/update_car/{{item.id}}" class="btn btn-info" style="margin-left: 20px;">Update</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %} 
+
+          
+    </div>
+
+{% endblock body %}

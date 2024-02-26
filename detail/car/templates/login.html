@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/log.css'%}">
+{% endblock css %}
+
+{% block body %}
+  
+  <div class="container log">
+    <form class="col-4 card mx-auto p-4 shadow-lg form-log" method="post">
+      {% csrf_token %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-danger" role="alert">
+            {{ message }} 
+          </div>
+        {% endfor %}
+      {% endif %}
+      <h3>LOGIN</h3>
+      <hr>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">User Name</label>
+          <input type="text" name="user_name" class="form-control" >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control">
+          <p>Don't have account<a href="/register/" style="text-decoration: none;"> Register!</a></p>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+
+{% endblock body %}
+
+
+
+

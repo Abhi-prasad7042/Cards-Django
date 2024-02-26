@@ -1,0 +1,54 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+  
+.welcome-message {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    animation: fadeInOut 1.5s ease-in-out forwards; /* Animation */
+}
+
+.welcome-message h1 {
+    color: white;
+    font-size: 32px;
+  }
+  
+@keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+.content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    /* border: 2px solid; */
+}
+
+.card-wrapper {
+    flex: 0 0 calc(33.33%-50px); /* Adjust width here */
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 100%; /* Ensure card takes full width of card-wrapper */
+}
